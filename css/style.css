@@ -1,0 +1,18 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+background-color:rgb(236,245,191);
+font-family:"Roboto";
+}
+header{
+width: 100vw;
+height: 20vh;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 56px;
+font-weight: 700;
+color:#75B79E;
+}
