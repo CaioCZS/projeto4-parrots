@@ -29,7 +29,7 @@ function cartasProJogo(){
 cartasProJogo();
 deckJogar.sort(comparador)
 
-//arrumar daqui pra baixo
+
 
 const deck= document.querySelector(".deck");
 
@@ -49,14 +49,68 @@ function distribuirCartas(parrot){
     }
 }distribuirCartas()
 
+let card1= "";
+let card2 = "";
+
 const revealCard = ({target}) =>{
-target.parentNode.parentNode.classList.add('reveal-card')
+
+    if(target.parentNode.parentNode.className.includes('reveal-card')){
+        return
+    }
+    numWin=0
+
+    if(card1 == ""){
+        target.parentNode.parentNode.classList.add('reveal-card');
+        card1 = target.parentNode.parentNode
+    }else if(card2 == ""){
+        target.parentNode.parentNode.classList.add('reveal-card');
+        card2=target.parentNode.parentNode;
+
+        checkCards();
+    }
+    for(i=0 ; i<divsCard.length ; i++){
+        
+        if(divsCard[i].classList.contains('reveal-card')){
+            numWin++
+        }
+        setTimeout(function(){
+            if(numWin == deckJogar.length){
+                alert('a')
+                numWin++
+            }
+        }, 500)
+    }
+
+   
 }
 
+function checkCards(){
+    const parrot1 = card1.getAttribute('data-parrot');
+    const parrot2 = card2.getAttribute('data-parrot')
+    
+    if(parrot1 === parrot2 ){
+
+        card1='';
+        card2='';
+    }else{
+
+        setTimeout(function(){
+            card1.classList.remove('reveal-card');
+            card2.classList.remove('reveal-card');
+            
+            card1='';
+            card2='';
+            
+        } , 1000)
+
+    }
+}
+let divsCard;
 function addEventListener(){
-    const divsCard=document. querySelectorAll('.card');
+    divsCard=document. querySelectorAll('.card');
     for(i=0 ; i<divsCard.length ; i++){
 divsCard[i].addEventListener('click' , revealCard)
+divsCard[i].setAttribute('data-parrot', deckJogar[i]);
     }
 }
 addEventListener()
