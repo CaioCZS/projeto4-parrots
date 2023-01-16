@@ -23,43 +23,58 @@ color:#75B79E;
     position: relative;
     margin-left:28px;
     margin-bottom:34px;
-    
+    transition: all .5s;
+    transform-style: preserve-3d;
   }
 
   .face {
     width: 100%;
     height: 100%;
-    background-color: #A7E9AF;
+   background-color: #A7E9AF;
     border-radius: 10px;
     box-shadow: 1px 1px 1px rgba(0,0,0,.3);
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
-    backface-visibility: hidden;
-    transition: all .5s;
-    transform-style: preserve-3d;
+ 
   }
 
-  .back-face {
+  .front-face{
+    transform: rotateY(180deg);
+
+  }
+
+  .back-face{
+    backface-visibility: hidden;
+  }
+
+  .reveal-card{
     transform: rotateY(180deg);
   }
 
-  .card:hover .back-face {
-    transform: rotateY(0deg);
+   img{
+  width: 100%;
+  height:90%;
   }
 
-  .card:hover  .front-face {
-    transform: rotateY(-180deg);
-  }
-   img{
-  width: 100px;
-  height:100px;
-  }
   .deck{
-    width: 892px;
+    width: 100vw;
+    max-width: 892px;
     margin:0 auto;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
+  }
+
+  @media(max-width:314px){
+    header{
+        font-size:36px;
+        text-align: center;
+    }
+
+    .deck{
+    flex-direction:column;
+    align-items: center;
+}
   }

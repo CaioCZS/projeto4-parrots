@@ -7,6 +7,7 @@ const imagens=[
     "./images/tripletsparrot.gif",
     "./images/unicornparrot.gif"
 ];
+imagens.sort(comparador);
 function comparador() { 
 	return Math.random() - 0.5; 
 }
@@ -27,28 +28,35 @@ function cartasProJogo(){
 }
 cartasProJogo();
 deckJogar.sort(comparador)
-console.log(deckJogar)
+
+//arrumar daqui pra baixo
 
 const deck= document.querySelector(".deck");
-console.log(deck)
 
-function distribuirCartas(){
-
-    for(i=0 ; i<qntdCartas ;i++){
-
-        deck.innerHTML += `
-        <div class="card">
-        <div class="front-face face" onclick="click()">
-          <img src="./images/back.png" />
+function distribuirCartas(parrot){
+    
+    for(i=0 ; i<qntdCartas ; i++){
+        deck.innerHTML+=`
+    <div class="card">
+        <div class="front-face face">
+        <img src="${deckJogar[i]}" >
         </div>
         <div class="back-face face">
-          <img  src=${deckJogar[i]}>
+        <img src="./images/back.png" />
         </div>
-      </div>
+    </div>
         `
     }
+}distribuirCartas()
+
+const revealCard = ({target}) =>{
+target.parentNode.parentNode.classList.add('reveal-card')
 }
-distribuirCartas();
 
-
-
+function addEventListener(){
+    const divsCard=document. querySelectorAll('.card');
+    for(i=0 ; i<divsCard.length ; i++){
+divsCard[i].addEventListener('click' , revealCard)
+    }
+}
+addEventListener()
