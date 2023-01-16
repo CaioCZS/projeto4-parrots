@@ -77,7 +77,7 @@ console.log(jogadas)
         }
         setTimeout(function(){
             if(numWin == deckJogar.length){
-                alert(`Você ganhou em ${jogadas} jogadas`)
+                alert(`Você ganhou em ${jogadas} jogadas!`)
                 numWin++
             }
         }, 500)
