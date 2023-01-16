@@ -52,8 +52,10 @@ function distribuirCartas(parrot){
 let card1= "";
 let card2 = "";
 
+let jogadas=0;
 const revealCard = ({target}) =>{
-
+jogadas++
+console.log(jogadas)
     if(target.parentNode.parentNode.className.includes('reveal-card')){
         return
     }
@@ -75,7 +77,7 @@ const revealCard = ({target}) =>{
         }
         setTimeout(function(){
             if(numWin == deckJogar.length){
-                alert('a')
+                alert(`Você ganhou em ${jogadas} jogadas`)
                 numWin++
             }
         }, 500)
