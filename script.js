@@ -1,3 +1,13 @@
+let contador=0;
+
+function temporizador(){
+    contador++
+    document.querySelector('.tempo').innerHTML = contador
+}
+const interval = setInterval(temporizador , 1000);
+
+//relogio acima
+
 const imagens=[ 
     "./images/fiestaparrot.gif",
     "./images/bobrossparrot.gif",
@@ -55,7 +65,6 @@ let card2 = "";
 let jogadas=0;
 const revealCard = ({target}) =>{
 jogadas++
-console.log(jogadas)
     if(target.parentNode.parentNode.className.includes('reveal-card')){
         return
     }
@@ -77,13 +86,20 @@ console.log(jogadas)
         }
         setTimeout(function(){
             if(numWin == deckJogar.length){
-                alert(`Você ganhou em ${jogadas} jogadas!`)
+                alert(`Você ganhou em ${jogadas} jogadas! A duração do jogo foi de ${contador} segundos!`)
                 numWin++
+                let resposta = prompt('Gostaria de jogar novamente?(sim ou não)')
+               while(resposta !== "sim" && resposta !== "não"){
+                resposta = prompt('Gostaria de jogar novamente?(sim ou não)')
+               }
+               if(resposta === "sim"){
+                window.location.reload(true)
             }
-        }, 500)
-    }
-
-   
+                clearInterval(interval)
+                
+            }
+        }, 1000)
+    }  
 }
 
 function checkCards(){
@@ -116,3 +132,4 @@ divsCard[i].setAttribute('data-parrot', deckJogar[i]);
     }
 }
 addEventListener()
+

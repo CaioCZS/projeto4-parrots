@@ -67,6 +67,16 @@ color:#75B79E;
     align-items: flex-start;
   }
 
+  .tempo{
+  position:fixed;
+  top: 20px;
+  right: 10px;
+  width:3vw;
+  height: 10vh;
+  color:#86BD8D;
+  font-size:36px;
+  }
+
   @media(max-width:314px){
     header{
         font-size:36px;
